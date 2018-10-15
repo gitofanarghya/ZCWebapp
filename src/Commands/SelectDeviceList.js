@@ -22,8 +22,8 @@ class CheckboxListSecondary extends React.Component {
     all: false
   };
 
-  handleChange = event => {
-    this.props.sendCommand(this.state.checked, event.target.value)
+  handleChange = command => {
+    this.props.sendCommand(this.state.checked, command)
   };
 
   handleToggle = value => () => {
@@ -57,7 +57,6 @@ class CheckboxListSecondary extends React.Component {
 
   render() {
     const { classes, trackers } = this.props;
-    console.log(this.state)
 
     return (
       <div className={classes.root}>
@@ -87,14 +86,17 @@ class CheckboxListSecondary extends React.Component {
         </List>
       </Grid>
       <Grid item sm={6} className="flex">
-        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleChange} value="clean">
+        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('CLEAN')}>
           CLEAN
         </Button>
-        <Button variant="contained" color="secondary" className={classes.button} onClick={this.handleChange} value="stop">
+        <Button variant="contained" color="secondary" className={classes.button} onClick={() => this.handleChange('STOP')}>
           STOP
         </Button>
-        <Button variant="contained" color="default" className={classes.button} onClick={this.handleChange} value="stow">
+        <Button variant="contained" color="default" className={classes.button} onClick={() => this.handleChange('STOW')}>
           STOW
+        </Button>
+        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('UT')}>
+          UPDATE TIME
         </Button>
       </Grid>  
       </Grid>

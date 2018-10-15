@@ -1,18 +1,18 @@
-export const commandsService = {
-    sendCommand
+export const wifiService = {
+    setWifiInfo
 };
 
-function sendCommand(trackers, command) {
+function setWifiInfo(ssid, pass) {
     const requestOptions = {
         method: "POST",
         mode: 'cors',
         body: JSON.stringify({
-            trackerID: "tracker001",
-            command: command
+            "ssid": ssid,
+            "password": pass
         })
     };
 
-    return fetch(`http://192.168.1.8:5000/sendCommand`, requestOptions)
+    return fetch(`http://192.168.1.8:5000/setWifiInfo`, requestOptions)
         .then(handleResponse)
 }
 

@@ -10,6 +10,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import classNames from 'classnames';
+import { wifiActions } from '../_actions'
 
 const styles = theme => ({
   
@@ -34,9 +35,8 @@ class Wifi extends Component {
     this.setState({ submitted: true });
     const { ssid, password } = this.state;
     console.log(ssid, password)
-    const { dispatch } = this.props;
     if (ssid && password) {
-        console.log('done')//dispatch(wifiActions.connect(ssid, password));
+        this.props.setWifiInfo(ssid, password);
     }
   }
 
@@ -91,10 +91,11 @@ Wifi.propTypes = {
 };
 
 
+const mapDispatchToProps = (dispatch) => ({
+    setWifiInfo: (ssid, pass) => {
+        dispatch(wifiActions.setWifiInfo(ssid, pass)) 
+    }
+  })
 
-const mapStateToProps = (state) => {
-  return {  };
-}
-
-const connectedWifi = connect(mapStateToProps)(withStyles(styles, { withTheme: true })(Wifi));
+const connectedWifi = connect(null, mapDispatchToProps)(withStyles(styles, { withTheme: true })(Wifi));
 export { connectedWifi as Wifi };

@@ -11,6 +11,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import { mailFolderListItems } from './NavData';
+import classNames from 'classnames'
 
 const drawerWidth = 240;
 
@@ -64,7 +65,7 @@ class ResponsiveDrawer extends React.Component {
 
     const drawer = (
       <div>
-        <div className={classes.toolbar} />
+        <div className={classNames(classes.toolbar, "ftclogo")} />
         <Divider />
         <List>{mailFolderListItems}</List>
         <Divider />

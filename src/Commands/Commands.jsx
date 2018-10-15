@@ -27,13 +27,13 @@ class Commands extends Component {
     }
 
     render(){
-        const { classes, commissioningData, sendCommand } = this.props;
+        const { classes, commissioningData, sendCommand, loaded } = this.props;
         
         return (
           <div className={classes.root} >
             <Grid container className="flex" alignItems="stretch" direction="row" justify="space-around">
               <Grid item sm={6} className={classNames("flex", "")}>
-                  <SelectDeviceList trackers={commissioningData} sendCommand={sendCommand}/>
+                  {loaded && <SelectDeviceList trackers={commissioningData} sendCommand={sendCommand}/>}
               </Grid>
             </Grid>
           </div>
@@ -55,6 +55,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   sendCommand: (trackers, command) => {
+      console.log(command)
       dispatch(commandsActions.sendCommand(trackers, command)) 
   }
 })

@@ -11,16 +11,18 @@ function sendCommand(trackers, command) {
 
         commandsService.sendCommand(trackers, command)
             .then(
-                commands => { 
-                    dispatch(success(commands));
+                ok => { 
+                    dispatch(success(ok.toString()));
+                    alert('successfully sent message!')
                 },
                 error => {
                     dispatch(failure(error.toString()));
+                    alert('error in sending message!')
                 }
             );
     };
 
     function request() { return { type: commandsConstants.SEND_COMMAND_REQUEST } }
-    function success() { return { type: commandsConstants.SEND_COMMAND_SUCCESS } }
+    function success(success) { return { type: commandsConstants.SEND_COMMAND_SUCCESS, success } }
     function failure(error) { return { type: commandsConstants.SEND_COMMAND_FAILURE, error } }
 }
