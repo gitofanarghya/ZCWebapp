@@ -13,7 +13,7 @@ function getCommissioningData() {
         commissioningService.getCommissioningData()
             .then(
                 commissioning => { 
-                    dispatch(success(commissioning));
+                    dispatch(success(commissioning, dispatch));
                 },
                 error => {
                     dispatch(failure(error.toString()));
@@ -22,13 +22,16 @@ function getCommissioningData() {
     };
 
     function request() { return { type: commissioningConstants.GET_COMMISSIONING_DATA_REQUEST } }
-    function success(commissioningData) { return { type: commissioningConstants.GET_COMMISSIONING_DATA_SUCCESS, commissioningData } }
+    function success(commissioningData, dispatch) {
+        dispatch(getCurrentTrackerInfo(commissioningData[0].trackerID)) 
+        return { type: commissioningConstants.GET_COMMISSIONING_DATA_SUCCESS, commissioningData } 
+    }
     function failure(error) { return { type: commissioningConstants.GET_COMMISSIONING_DATA_FAILURE, error } }
 }
 
 function getCurrentTrackerInfo(trackerID) {
     return dispatch => {
-        dispatch(request());
+        dispatch(request(trackerID));
 
         commissioningService.getCurrentTrackerInfo(trackerID)
             .then(
@@ -41,7 +44,7 @@ function getCurrentTrackerInfo(trackerID) {
             );
     };
 
-    function request() { return { type: commissioningConstants.GET_CURRENT_TRACKER_INFO_REQUEST } }
+    function request(trackerID) { return { type: commissioningConstants.GET_CURRENT_TRACKER_INFO_REQUEST, trackerID } }
     function success(trackerDetails) { return { type: commissioningConstants.GET_CURRENT_TRACKER_INFO_SUCCESS, trackerDetails } }
     function failure(error) { return { type: commissioningConstants.GET_CURRENT_TRACKER_INFO_FAILURE, error } }
 }

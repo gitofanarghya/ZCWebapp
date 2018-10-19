@@ -9,6 +9,7 @@ import DeviceList from './DeviceList';
 import TrackerDetails from './TrackerDetails';
 import { commissioningActions } from '../_actions';
 import { Loading } from '../_components';
+import TrackerAngle from './TrackerAngle';
 
 const styles = theme => ({
     root: {
@@ -16,6 +17,15 @@ const styles = theme => ({
         width: '100%',
         display: 'flex'
     },  
+    padTop: {
+        paddingTop: '5px'
+    },
+    padBottom: {
+        paddingBottom: '5px'
+    },
+    padRight: {
+        paddingRight: '10px'
+    }
 });
 
 class Commissioning extends Component {
@@ -39,19 +49,28 @@ class Commissioning extends Component {
     }
 
     render(){
-        const { classes, loaded, commissioningData, selectedTrackerDetails, loadedTrackerInfo } = this.props;
+        const { classes, loaded, commissioningData, selectedTrackerDetails, loadedTrackerInfo, selectedTrackerID } = this.props;
         
         return (
             <div className={classes.root} >
                 <Grid container className="flex" alignItems="stretch" direction="row" justify="space-around">
-                    <Grid item sm={6} className={classNames("flex", "")}>
+                    <Grid item sm={6} className={classNames("flex", classes.padRight)}>
                         { loaded ? <DeviceList devices={commissioningData} getTrackerDetails={this.getTrackerDetails}/> : <Loading /> }
                     </Grid>
-                    <Grid item sm={6} className={classNames("flex", "")}>
+                    <Grid item sm={6} className={classNames("flex")}>
+                        <Grid container className="flex" alignItems="stretch" direction="column" justify="space-around">
+                        <Grid item sm className={classNames("flex", classes.padBottom)}>
+                        {
+                            loadedTrackerInfo ? <TrackerAngle angle={selectedTrackerDetails.UpdateData.tracking.inclinometerAngle}/> : <Loading />
+                        }
+                        </Grid>
+                        <Grid item sm className={classNames("flex", classes.padTop)}>
                         { loadedTrackerInfo ? <TrackerDetails 
-                                                deviceID={this.state.deviceID}
-                                                trackerID={this.state.trackerID} 
+                                                deviceID={commissioningData.find(e => e.trackerID === selectedTrackerID).controllerInfo.macID}
+                                                trackerID={selectedTrackerID} 
                                                 trackerDetails={selectedTrackerDetails.UpdateData}/> : <Loading /> }
+                        </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </div>
@@ -64,12 +83,13 @@ Commissioning.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    const { loaded, commissioningData, selectedTrackerDetails, loadedTrackerInfo } = state.commissioning;
+    const { loaded, commissioningData, selectedTrackerDetails, loadedTrackerInfo, selectedTrackerID } = state.commissioning;
     return {
         commissioningData,
         loaded,
         loadedTrackerInfo,
-        selectedTrackerDetails
+        selectedTrackerDetails,
+        selectedTrackerID
     };
 }
 

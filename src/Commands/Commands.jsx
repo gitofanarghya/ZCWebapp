@@ -31,11 +31,7 @@ class Commands extends Component {
         
         return (
           <div className={classes.root} >
-            <Grid container className="flex" alignItems="stretch" direction="row" justify="space-around">
-              <Grid item sm={6} className={classNames("flex", "")}>
                   {loaded && <SelectDeviceList trackers={commissioningData} sendCommand={sendCommand}/>}
-              </Grid>
-            </Grid>
           </div>
         );
     }

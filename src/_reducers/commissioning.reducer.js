@@ -6,7 +6,8 @@ const initialState = {
   loaded:  false,
   requestingTrackerInfo: false,
   loadedTrackerInfo: false,
-  selectedTrackerDetails: null
+  selectedTrackerDetails: null,
+  selectedTrackerID: null
 }
 
 export function commissioning(state, action) {
@@ -38,7 +39,8 @@ export function commissioning(state, action) {
       return {
         ...state,
         requestingTrackerInfo: true,
-        loadedTrackerInfo: false
+        loadedTrackerInfo: false,
+        selectedTrackerID: action.trackerID
       };
     case commissioningConstants.GET_CURRENT_TRACKER_INFO_SUCCESS:
       return {

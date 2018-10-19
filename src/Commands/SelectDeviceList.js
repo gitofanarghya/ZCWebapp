@@ -7,6 +7,12 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Grid, Button } from '@material-ui/core';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -60,46 +66,67 @@ class CheckboxListSecondary extends React.Component {
 
     return (
       <div className={classes.root}>
-      <Grid container direction="column" justify="space-evenly" alignItems="center">
-      <Grid item sm={6} className="flex">
-        <List>
-        <ListItem button className={classes.listItem}>
-        <ListItemText primary="select all" />
-              <ListItemSecondaryAction>
-                <Checkbox
-                  onChange={this.handleToggleAll()}
-                  checked={this.state.all}
-                />
-              </ListItemSecondaryAction>
-          </ListItem>
-          {trackers.map(value => (
-            <ListItem key={value.trackerID} button className={classes.listItem}>
-              <ListItemText primary={value.trackerID} />
-              <ListItemSecondaryAction>
-                <Checkbox
-                  onChange={this.handleToggle(value)}
-                  checked={this.state.checked.indexOf(value) !== -1}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
-        </List>
-      </Grid>
-      <Grid item sm={6} className="flex">
-        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('CLEAN')}>
-          CLEAN
-        </Button>
-        <Button variant="contained" color="secondary" className={classes.button} onClick={() => this.handleChange('STOP')}>
-          STOP
-        </Button>
-        <Button variant="contained" color="default" className={classes.button} onClick={() => this.handleChange('STOW')}>
-          STOW
-        </Button>
-        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('UT')}>
-          UPDATE TIME
-        </Button>
-      </Grid>  
-      </Grid>
+        <Table className={classes.table}>
+            <TableBody>
+            <TableRow>
+                      <TableCell padding="default">ZONE</TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('CLEAN')}>
+                          CLEAN
+                        </Button>
+                      </TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOW')}>
+                          STOW
+                        </Button>
+                      </TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOP')}>
+                          STOP
+                        </Button>
+                      </TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('AUTO')}>
+                          AUTO
+                        </Button>
+                      </TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('UT')}>
+                          UPDATE TIME
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+            {
+              trackers.map(tracker => {
+                  return (
+                    <TableRow key={tracker.trackerID}>
+                      <TableCell padding="default">{tracker.trackerID}</TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('CLEAN')}>
+                          CLEAN
+                        </Button>
+                      </TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOW')}>
+                          STOW
+                        </Button>
+                      </TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOP')}>
+                          STOP
+                        </Button>
+                      </TableCell>
+                      <TableCell padding="default">
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('AUTO')}>
+                          AUTO
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  )
+              })
+            }
+            </TableBody>
+        </Table> 
       </div>
     );
   }

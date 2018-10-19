@@ -4,14 +4,20 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
-import { mailFolderListItems } from './NavData';
 import classNames from 'classnames'
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import BuildIcon from '@material-ui/icons/Build';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import SendIcon from '@material-ui/icons/Send';
+import NetworkWifiIcon from '@material-ui/icons/NetworkWifi';
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -46,19 +52,28 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'lightgrey',
     padding: theme.spacing.unit * 3,
   },
+  selected: {
+    backgroundColor: "lightskyblue"
+  }
 });
 
 class ResponsiveDrawer extends React.Component {
   state = {
     mobileOpen: false,
+    selected: 0
   };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
+
+  handleListItemClick = (event, index) => {
+    this.setState({ selected: index });
+  };
+
 
   render() {
     const { classes, theme, children } = this.props;
@@ -67,7 +82,38 @@ class ResponsiveDrawer extends React.Component {
       <div>
         <div className={classNames(classes.toolbar, "ftclogo")} />
         <Divider />
-        <List>{mailFolderListItems}</List>
+        <Link to="/Commissioning">
+        <ListItem button className={this.state.selected === 0 ? classes.selected : ""} onClick={event => this.handleListItemClick(event, 0)}>
+          <ListItemIcon>
+            <BuildIcon />
+          </ListItemIcon>
+          <ListItemText primary="Commissioning" />
+        </ListItem>
+        </Link>
+        <Link to="/Commands">
+        <ListItem button className={this.state.selected === 1 ? classes.selected : ""} onClick={event => this.handleListItemClick(event, 1)}>
+          <ListItemIcon>
+            <SendIcon />
+          </ListItemIcon>
+          <ListItemText primary="Commands" />
+        </ListItem>
+        </Link>
+        <Link to="/Trends">
+        <ListItem button className={this.state.selected === 2 ? classes.selected : ""} onClick={event => this.handleListItemClick(event, 2)}>
+          <ListItemIcon>
+            <TrendingUpIcon />
+          </ListItemIcon>
+          <ListItemText primary="Trends" />
+        </ListItem>
+        </Link>
+        <Link to="/Wifi">
+        <ListItem button className={this.state.selected === 3 ? classes.selected : ""} onClick={event => this.handleListItemClick(event, 3)}>
+          <ListItemIcon>
+            <NetworkWifiIcon />
+          </ListItemIcon>
+          <ListItemText primary="Wifi-Settings" />
+        </ListItem>
+        </Link>
         <Divider />
       </div>
     );
