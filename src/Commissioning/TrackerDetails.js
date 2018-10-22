@@ -41,17 +41,17 @@ function TrackerDetails(props) {
         <Table className={classes.table}>
             <TableHead>
             <TableRow>
-                <TableCell padding="dense"><Typography variant="subheading">ID</Typography></TableCell>
+                <TableCell padding="dense"><Typography variant="body2">ID</Typography></TableCell>
                 <TableCell padding="dense">
                   <Table>
                     <TableBody>
                           <TableRow>
-                            <TableCell className={classes.innerRow} padding="dense">Tracker ID</TableCell>
-                            <TableCell className={classes.innerRow} padding="dense">{trackerID}</TableCell>
+                            <TableCell className={classes.innerRow} padding="dense"><Typography variant="body2">Tracker ID</Typography></TableCell>
+                            <TableCell className={classes.innerRow} padding="dense"><Typography variant="body2">{trackerID}</Typography></TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableCell className={classes.innerRow} padding="dense">Device ID</TableCell>
-                            <TableCell className={classes.innerRow} padding="dense">{deviceID}</TableCell>
+                            <TableCell className={classes.innerRow} padding="dense"><Typography variant="body2">Device ID</Typography></TableCell>
+                            <TableCell className={classes.innerRow} padding="dense"><Typography variant="body2">{deviceID}</Typography></TableCell>
                           </TableRow>
                     </TableBody>
                   </Table>
@@ -64,7 +64,7 @@ function TrackerDetails(props) {
                 if (data.hasOwnProperty(property)) {
                   return (
                     <TableRow key={property}>
-                      <TableCell className={classes.outerRow} padding="dense">{property}</TableCell>
+                      <TableCell className={classes.outerRow} padding="dense"><Typography variant="body2">{property}</Typography></TableCell>
                       <TableCell padding="dense">
                       <Table>
                         <TableBody>
@@ -72,8 +72,8 @@ function TrackerDetails(props) {
                           if (data[property].hasOwnProperty(e)) {
                             return (
                               <TableRow key={e}>
-                                <TableCell className={classes.innerRow} padding="dense">{e}</TableCell>
-                                <TableCell className={classes.innerRow} padding="dense">{data[property][e]}</TableCell>
+                                <TableCell className={classes.innerRow} padding="dense"><Typography variant="body2">{e}</Typography></TableCell>
+                                <TableCell className={classes.innerRow} padding="dense"><Typography variant="body2">{data[property][e]}</Typography></TableCell>
                               </TableRow>
                             )
                           }

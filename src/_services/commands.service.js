@@ -12,7 +12,7 @@ function sendCommand(trackers, command) {
         })
     };
 
-    return fetch(`http://192.168.1.8:5000/sendCommand`, requestOptions)
+    return fetch(`http://192.168.43.61:5000/sendCommand`, requestOptions)
         .then(handleResponse)
 }
 
