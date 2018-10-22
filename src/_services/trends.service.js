@@ -16,7 +16,7 @@ function getTrends( trackers, parameter ) {
 
 
 
-    return fetch(`http://192.168.43.61:5000/trends`, requestOptions)
+    return fetch(`http://127.0.0.1:5000/trends`, requestOptions)
         .then(handleResponse)
 }
 

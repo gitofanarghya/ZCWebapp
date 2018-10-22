@@ -12,7 +12,7 @@ function setWifiInfo(ssid, pass) {
         })
     };
 
-    return fetch(`http://192.168.43.61:5000/setWifiInfo`, requestOptions)
+    return fetch(`http://127.0.0.1:5000/setWifiInfo`, requestOptions)
         .then(handleResponse)
 }
 
