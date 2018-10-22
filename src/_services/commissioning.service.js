@@ -8,7 +8,7 @@ const hostName = window.location.hostname
 function getCommissioningData() {
     const requestOptions = {
         method: "GET",
-        mode: 'no-cors',
+        mode: 'cors',
         body: null
     };
 
@@ -19,7 +19,7 @@ function getCommissioningData() {
 function getCurrentTrackerInfo(trackerID) {
     const requestOptions = {
         method: "GET",
-        mode: 'no-cors',
+        mode: 'cors',
         body: null
     };
 
@@ -29,6 +29,7 @@ function getCurrentTrackerInfo(trackerID) {
 
 function handleResponse(response) {
     return response.json().then(json => {
+        console.log(json)
         if (!response.ok) {
             if (response.status === 403) {
                 console.log("403")

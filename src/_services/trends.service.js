@@ -7,7 +7,7 @@ const hostName = window.location.hostname
 function getTrends( trackers, parameter ) {
     const requestOptions = {
         method: "POST",
-        mode: 'no-cors',
+        mode: 'cors',
         body: JSON.stringify({
             "trackerId": trackers,
             "parameter": parameter

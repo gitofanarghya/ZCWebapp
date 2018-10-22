@@ -7,7 +7,7 @@ const hostName = window.location.hostname
 function sendCommand(trackers, command) {
     const requestOptions = {
         method: "POST",
-        mode: 'no-cors',
+        mode: 'cors',
         body: JSON.stringify({
             trackerID: "tracker001",
             command: command

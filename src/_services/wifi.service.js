@@ -7,7 +7,7 @@ const hostName = window.location.hostname
 function setWifiInfo(ssid, pass) {
     const requestOptions = {
         method: "POST",
-        mode: 'no-cors',
+        mode: 'cors',
         body: JSON.stringify({
             "ssid": ssid,
             "password": pass
