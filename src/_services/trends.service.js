@@ -5,7 +5,7 @@ export const trendsService = {
 function getTrends( trackers, parameter ) {
     const requestOptions = {
         method: "POST",
-        mode: 'cors',
+        mode: 'no-cors',
         body: JSON.stringify({
             "trackerId": trackers,
             "parameter": parameter

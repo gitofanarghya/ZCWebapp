@@ -5,7 +5,7 @@ export const commandsService = {
 function sendCommand(trackers, command) {
     const requestOptions = {
         method: "POST",
-        mode: 'cors',
+        mode: 'no-cors',
         body: JSON.stringify({
             trackerID: "tracker001",
             command: command

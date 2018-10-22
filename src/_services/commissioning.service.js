@@ -6,7 +6,7 @@ export const commissioningService = {
 function getCommissioningData() {
     const requestOptions = {
         method: "GET",
-        mode: 'cors',
+        mode: 'no-cors',
         body: null
     };
 
@@ -17,7 +17,7 @@ function getCommissioningData() {
 function getCurrentTrackerInfo(trackerID) {
     const requestOptions = {
         method: "GET",
-        mode: 'cors',
+        mode: 'no-cors',
         body: null
     };
 

@@ -158,14 +158,16 @@ class Trends extends React.Component {
                     }}>
                 {loadedTrends ? 
                 
-                    <LineChart width={this.contentDiv.getBoundingClientRect().width} height={this.contentDiv.getBoundingClientRect().height} data={trends}
+                    <LineChart width={this.contentDiv.getBoundingClientRect().width} height={this.contentDiv.getBoundingClientRect().height} data={trends.coordinates}
                             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                        <XAxis dataKey="x"/>
+                        <XAxis dataKey="timeStamp"/>
                         <YAxis/>
                         <CartesianGrid strokeDasharray="3 3"/>
                         <Tooltip/>
                         <Legend />
-                        <Line type="monotone" dataKey="y" stroke="#8884d8" activeDot={{r: 8}}/>
+                        {this.state.trackers.map(t => {
+                            return <Line type="monotone" dataKey={t} stroke="#8884d8" activeDot={{r: 8}}/>
+                        })}
                     </LineChart>
                 : "select data to plot"}
                 </div>

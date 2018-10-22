@@ -5,7 +5,7 @@ export const wifiService = {
 function setWifiInfo(ssid, pass) {
     const requestOptions = {
         method: "POST",
-        mode: 'cors',
+        mode: 'no-cors',
         body: JSON.stringify({
             "ssid": ssid,
             "password": pass
