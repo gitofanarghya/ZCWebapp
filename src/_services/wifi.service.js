@@ -2,6 +2,8 @@ export const wifiService = {
     setWifiInfo
 };
 
+const hostName = window.location.hostname
+
 function setWifiInfo(ssid, pass) {
     const requestOptions = {
         method: "POST",
@@ -12,7 +14,7 @@ function setWifiInfo(ssid, pass) {
         })
     };
 
-    return fetch(`http://127.0.0.1:5000/setWifiInfo`, requestOptions)
+    return fetch(`http://${hostName}:5000/setWifiInfo`, requestOptions)
         .then(handleResponse)
 }
 

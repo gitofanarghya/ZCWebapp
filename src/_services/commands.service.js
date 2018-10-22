@@ -2,6 +2,8 @@ export const commandsService = {
     sendCommand
 };
 
+const hostName = window.location.hostname
+
 function sendCommand(trackers, command) {
     const requestOptions = {
         method: "POST",
@@ -12,7 +14,7 @@ function sendCommand(trackers, command) {
         })
     };
 
-    return fetch(`http://127.0.0.1:5000/sendCommand`, requestOptions)
+    return fetch(`http://${hostName}:5000/sendCommand`, requestOptions)
         .then(handleResponse)
 }
 

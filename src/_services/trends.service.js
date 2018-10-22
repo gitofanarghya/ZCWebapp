@@ -2,6 +2,8 @@ export const trendsService = {
     getTrends,
 };
 
+const hostName = window.location.hostname
+
 function getTrends( trackers, parameter ) {
     const requestOptions = {
         method: "POST",
@@ -16,7 +18,7 @@ function getTrends( trackers, parameter ) {
 
 
 
-    return fetch(`http://127.0.0.1:5000/trends`, requestOptions)
+    return fetch(`http://${hostName}:5000/trends`, requestOptions)
         .then(handleResponse)
 }
 
