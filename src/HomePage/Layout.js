@@ -62,23 +62,28 @@ const styles = theme => ({
 
 class ResponsiveDrawer extends React.Component {
   state = {
-    mobileOpen: false
+    mobileOpen: false,
+    selected: 0
   };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
+  handleListItemClick = (event, index) => {
+    this.setState({ selected: index });
+  };
+
 
   render() {
     const { classes, theme, children } = this.props;
-    console.log(this.props.selected)
+
     const drawer = (
       <div>
         <div className={classNames(classes.toolbar, "ftclogo")} />
         <Divider />
         <Link to="/Commissioning">
-        <ListItem button className={this.props.selected === 'Commissioning' || !this.props.selected ? classes.selected : ""}>
+        <ListItem button className={this.state.selected === 0 ? classes.selected : ""} onClick={event => this.handleListItemClick(event, 0)}>
           <ListItemIcon>
             <BuildIcon />
           </ListItemIcon>
@@ -86,7 +91,7 @@ class ResponsiveDrawer extends React.Component {
         </ListItem>
         </Link>
         <Link to="/Commands">
-        <ListItem button className={this.props.selected === 'Commands' ? classes.selected : ""}>
+        <ListItem button className={this.state.selected === 1 ? classes.selected : ""} onClick={event => this.handleListItemClick(event, 1)}>
           <ListItemIcon>
             <SendIcon />
           </ListItemIcon>
@@ -94,7 +99,7 @@ class ResponsiveDrawer extends React.Component {
         </ListItem>
         </Link>
         <Link to="/Trends">
-        <ListItem button className={this.props.selected === 'Trends' ? classes.selected : ""}>
+        <ListItem button className={this.state.selected === 2 ? classes.selected : ""} onClick={event => this.handleListItemClick(event, 2)}>
           <ListItemIcon>
             <TrendingUpIcon />
           </ListItemIcon>
@@ -102,7 +107,7 @@ class ResponsiveDrawer extends React.Component {
         </ListItem>
         </Link>
         <Link to="/Wifi">
-        <ListItem button className={this.props.selected === 'Wifi' ? classes.selected : ""}>
+        <ListItem button className={this.state.selected === 3 ? classes.selected : ""} onClick={event => this.handleListItemClick(event, 3)}>
           <ListItemIcon>
             <NetworkWifiIcon />
           </ListItemIcon>

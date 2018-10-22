@@ -17,7 +17,7 @@ class HomePage extends React.Component {
     render() {
 
         return(
-            <Layout selected={this.props.match.params.id}>
+            <Layout>
                 {
                     this.props.match.params.id ?
                         this.props.match.params.id === 'Commissioning' ? <Commissioning /> :
