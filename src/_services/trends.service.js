@@ -18,7 +18,7 @@ function getTrends( trackers, parameter ) {
 
 
 
-    return fetch(`http://2e271ad6.ngrok.io/trends`, requestOptions)
+    return fetch(`http://${hostName}:5000/trends`, requestOptions)
         .then(handleResponse)
 }
 
