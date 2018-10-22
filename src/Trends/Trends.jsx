@@ -12,6 +12,7 @@ import { Grid, Button, Checkbox, ListItemText } from '@material-ui/core';
 import { connect } from 'react-redux'
 import { trendsActions } from '../_actions'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import moment from 'moment'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -160,10 +161,10 @@ class Trends extends React.Component {
                 
                     <LineChart width={this.contentDiv.getBoundingClientRect().width} height={this.contentDiv.getBoundingClientRect().height} data={trends.coordinates}
                             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                        <XAxis dataKey="timeStamp"/>
+                        <XAxis tickFormatter = {(unixTime) => moment(unixTime).format('HH:mm MMM Do YY')} dataKey="timeStamp"/>
                         <YAxis/>
                         <CartesianGrid strokeDasharray="3 3"/>
-                        <Tooltip/>
+                        <Tooltip />
                         <Legend />
                         {this.state.trackers.map(t => {
                             return <Line type="monotone" dataKey={t} stroke="#8884d8" activeDot={{r: 8}}/>

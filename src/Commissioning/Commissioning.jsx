@@ -36,7 +36,14 @@ class Commissioning extends Component {
 
     state = {
         trackerID: "",
-        deviceID: ""
+        deviceID: "",
+        permitJoinClicked: false
+    }
+
+    permitJoin = () => {
+        this.setState({
+            permitJoinClicked: true
+        })
     }
 
     getTrackerDetails = (trackerID) => {
@@ -55,7 +62,7 @@ class Commissioning extends Component {
             <div className={classes.root} >
                 <Grid container className="flex" alignItems="stretch" direction="row" justify="space-around">
                     <Grid item sm={6} className={classNames("flex", classes.padRight)}>
-                        { loaded ? <DeviceList devices={commissioningData} getTrackerDetails={this.getTrackerDetails}/> : <Loading /> }
+                        { loaded ? <DeviceList permitJoin={this.permitJoin} permitJoinClicked={this.state.permitJoinClicked} selectedTrackerID={selectedTrackerID} devices={commissioningData} getTrackerDetails={this.getTrackerDetails}/> : <Loading /> }
                     </Grid>
                     <Grid item sm={6} className={classNames("flex")}>
                         <Grid container className="flex" alignItems="stretch" direction="column" justify="space-around">

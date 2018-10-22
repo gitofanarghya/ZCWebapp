@@ -15,9 +15,11 @@ const styles = theme => ({
   heading: {
     paddingLeft: '24px'
   },
-  innerRow: {
-    border: 'none !important'
-  },
+  innerDiv: {
+    width: 'calc(100% - 24px)',
+    height: '100%',
+    margin: 'auto'
+  },  
   outerRow: {
     borderRight: '1px solid #e0e0e0'
   }
@@ -27,7 +29,8 @@ function TrackerDetails(props) {
   const { classes, angle } = props;
   
   return (
-    <Paper className={classNames(classes.root, 
+    <Paper className={classes.root}>
+    <div className={classNames(classes.innerDiv, 
     angle >= 52.5 ? 'angle60' : 
     angle >= 37.5 ? 'angle45' :
     angle >= 22.5 ? 'angle30' :
@@ -38,6 +41,7 @@ function TrackerDetails(props) {
     angle >= -52.5 ? 'angle_45' :
     'angle_60')}>
         Angle = {angle}
+        </div>
     </Paper>
   );
 }

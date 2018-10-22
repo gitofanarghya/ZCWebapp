@@ -18,7 +18,9 @@ const styles = theme => ({
   },
   zoneImage: {
     height: '15%',
-    display: 'flex'
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
   table: {
     overflowX: 'auto',
@@ -29,17 +31,30 @@ const styles = theme => ({
     width: '35%',
     height: '100%',
   },
+  dummy: {
+    width: '35%',
+    height: '100%',
+  },
   tracker: {
     maxHeight: '30px',
     minWidth: '120px',
     maxWidth: '130px',
-    border: '1px solid black'
-  }
+    border: '1px solid black',
+    boxShadow: '0px 0px 20px grey',
+    cursor: 'pointer'
+  },
+  clicked: {
+    maxHeight: '30px',
+    minWidth: '120px',
+    maxWidth: '130px',
+    border: '1px solid black',
+    cursor: 'pointer'
+  },
   
 });
 
 function DeviceList(props) {
-  const { classes, devices } = props;
+  const { classes, devices, selectedTrackerID } = props;
 
   const data = devices
 
@@ -52,7 +67,7 @@ function DeviceList(props) {
           {data.map(n => {
                   return (
                     <Grid item xs 
-                    className={classes.tracker} 
+                    className={n.trackerID === selectedTrackerID ? classes.clicked : classes.tracker} 
                     onClick={() => props.getTrackerDetails(n.trackerID)}
                     key={n.trackerID}>{n.trackerID}</Grid>
                   )
@@ -60,7 +75,8 @@ function DeviceList(props) {
         </Grid>
         <div className={classes.zoneImage}>
             <div className={classes.image}></div>
-            <Button >Permit Join</Button>
+            <Button className={classes.button} variant='contained' disabled={props.permitJoinClicked} onClick={props.permitJoin} >Permit Join</Button>
+            <div className={classes.dummy}></div>
         </div>
     </Paper>
   );

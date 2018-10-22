@@ -41,51 +41,51 @@ a {
 
 .angle_60 {
   background-image: url('/img/angle/-60.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 .angle60 {
   background-image: url('/img/angle/60.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 .angle_30 {
   background-image: url('/img/angle/-30.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 .angle30 {
   background-image: url('/img/angle/30.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 .angle_15 {
   background-image: url('/img/angle/-15.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 .angle15 {
   background-image: url('/img/angle/15.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 .angle_45 {
   background-image: url('/img/angle/-45.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 .angle45 {
   background-image: url('/img/angle/45.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 .angle0 {
   background-image: url('/img/angle/0.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -93,7 +93,7 @@ a {
   height: 100%;
 }
 
-.container-column {
+.coverer-column {
   display: flex;
   flex-direction: column;
 }
