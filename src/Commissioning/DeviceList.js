@@ -40,7 +40,7 @@ const styles = theme => ({
     minWidth: '120px',
     maxWidth: '130px',
     border: '1px solid black',
-    boxShadow: '0px 0px 20px grey',
+    boxShadow: '1px 1px 5px black',
     cursor: 'pointer'
   },
   clicked: {
@@ -48,6 +48,7 @@ const styles = theme => ({
     minWidth: '120px',
     maxWidth: '130px',
     border: '1px solid black',
+    boxShadow: 'inset 1px 1px 5px black',
     cursor: 'pointer'
   },
   
