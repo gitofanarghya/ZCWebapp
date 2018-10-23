@@ -23,30 +23,27 @@ const styles = theme => ({
 
 class CheckboxListSecondary extends React.Component {
   state = {
-    checked: [],
-    selectedValue: '',
-    all: false
+    auto: [],
+    stopped: []
   };
 
-  handleChange = command => {
-    this.props.sendCommand(this.state.checked, command)
-  };
-
-  handleToggle = value => () => {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
+  handleChange = (command, trackerID) => {
+    this.props.sendCommand(trackerID, command)
+    const newAuto = this.state.auto
+    const newStopped = this.state.stopped
+    if(command === 'STOP') {
+      newStopped.push(trackerID)
+      this.setState({
+        stopped: newStopped
+      })  
+    } else if(command === 'AUTO') {
+      newAuto.push(trackerID)
+      this.setState({
+        auto: newAuto
+      })
     }
-
-    this.setState({
-      checked: newChecked,
-    });
   };
+
 
   handleToggleAll = () => () => {
     this.state.all ? 
@@ -63,8 +60,8 @@ class CheckboxListSecondary extends React.Component {
 
   render() {
     const { classes, trackers } = this.props;
-
-    return (
+    console.log(this.state)
+    return ( 
       <div className={classes.root}>
         <Table className={classes.table}>
             <TableBody>
@@ -102,22 +99,22 @@ class CheckboxListSecondary extends React.Component {
                     <TableRow key={tracker.trackerID}>
                       <TableCell padding="default">{tracker.trackerID}</TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('CLEAN')}>
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('CLEAN', tracker.trackerID)}>
                           CLEAN
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOW')}>
+                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOW', tracker.trackerID)}>
                           STOW
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOP')}>
+                        <Button variant="contained" disabled={this.state.stopped ? this.state.stopped.indexOf(tracker.trackerID) > -1 ? true : false : false } color="primary" className={classes.button} onClick={() => this.handleChange('STOP', tracker.trackerID)}>
                           STOP
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('AUTO')}>
+                        <Button variant="contained" disabled={this.state.auto ? this.state.auto.indexOf(tracker.trackerID) > -1 ? true : false : false } color="primary" className={classes.button} onClick={() => this.handleChange('AUTO', tracker.trackerID)}>
                           AUTO
                         </Button>
                       </TableCell>
