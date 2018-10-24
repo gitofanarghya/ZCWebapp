@@ -12,7 +12,7 @@ function getCommissioningData() {
         body: null
     };
 
-    return fetch(`http://${hostName}:5000/getCommissioningData`, requestOptions)
+    return fetch(`https://099239c0-c7c8-488d-b965-7b1073b0c389.mock.pstmn.io/getCommissioningData`, requestOptions)
         .then(handleResponse)
 }
 

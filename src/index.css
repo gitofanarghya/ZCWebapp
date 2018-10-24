@@ -200,3 +200,11 @@ html, body, .h100 {
 .bordered {
   box-shadow: 0px 0px 1px 0px grey
 }
+
+.cleanIcon {
+  width: 1em;
+  height: 1em;
+  background-size: contain;
+  background-image: url('/img/buttons/clean.png');
+  font-size: 24px;
+}

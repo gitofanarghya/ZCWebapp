@@ -1,24 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
+import StopIcon from '@material-ui/icons/Stop'
+import StraightenIcon from '@material-ui/icons/Straighten'
+import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
+import AccessTimeIcon from '@material-ui/icons/AccessTime'
+import { Icon } from '@material-ui/core/Icon'
 import { Grid, Button } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
+import classNames from 'classnames';
 
 const styles = theme => ({
   root: {
     width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
+  red: {
+    backgroundColor: 'red'
+  },
+  green: {
+    backgroundColor: 'lightgreen'
+  },
+  orange: {
+    backgroundColor: 'darkorange'
+  },
+  yellow: {
+    backgroundColor: 'beige'
+  },
+  blue: {
+    backgroundColor: 'lightskyblue'
+  },
+  rightIcon: {
+    marginLeft: theme.spacing.unit,
+  }
 });
 
 class CheckboxListSecondary extends React.Component {
@@ -68,28 +85,33 @@ class CheckboxListSecondary extends React.Component {
             <TableRow>
                       <TableCell padding="default">ZONE</TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('CLEAN')}>
+                        <Button variant="extendedFab" className={classes.green} onClick={() => this.handleChange('CLEAN')}>
                           CLEAN
+                          <div className={classNames(classes.rightIcon, 'cleanIcon')}></div>
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOW')}>
+                        <Button variant="extendedFab" className={classes.orange} onClick={() => this.handleChange('STOW')}>
                           STOW
+                          <StraightenIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOP')}>
+                        <Button variant="extendedFab" className={classes.red} onClick={() => this.handleChange('STOP')}>
                           STOP
+                          <StopIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('AUTO')}>
+                        <Button variant="extendedFab" className={classes.blue} onClick={() => this.handleChange('AUTO')}>
                           AUTO
+                          <BrightnessAutoIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('UT')}>
+                        <Button variant="extendedFab" className={classes.yellow} onClick={() => this.handleChange('UT')}>
                           UPDATE TIME
+                          <AccessTimeIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                     </TableRow>
@@ -99,23 +121,27 @@ class CheckboxListSecondary extends React.Component {
                     <TableRow key={tracker.trackerID}>
                       <TableCell padding="default">{tracker.trackerID}</TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('CLEAN', tracker.trackerID)}>
+                        <Button variant="extendedFab" className={classes.green} onClick={() => this.handleChange('CLEAN', tracker.trackerID)}>
                           CLEAN
+                          <div className={classNames(classes.rightIcon, 'cleanIcon')}></div>
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" color="primary" className={classes.button} onClick={() => this.handleChange('STOW', tracker.trackerID)}>
+                        <Button variant="extendedFab" className={classes.orange} onClick={() => this.handleChange('STOW', tracker.trackerID)}>
                           STOW
+                          <StraightenIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" disabled={this.state.stopped ? this.state.stopped.indexOf(tracker.trackerID) > -1 ? true : false : false } color="primary" className={classes.button} onClick={() => this.handleChange('STOP', tracker.trackerID)}>
+                        <Button variant="extendedFab" disabled={this.state.stopped ? this.state.stopped.indexOf(tracker.trackerID) > -1 ? true : false : false } className={classes.red} onClick={() => this.handleChange('STOP', tracker.trackerID)}>
                           STOP
+                          <StopIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" disabled={this.state.auto ? this.state.auto.indexOf(tracker.trackerID) > -1 ? true : false : false } color="primary" className={classes.button} onClick={() => this.handleChange('AUTO', tracker.trackerID)}>
+                        <Button variant="extendedFab" disabled={this.state.auto ? this.state.auto.indexOf(tracker.trackerID) > -1 ? true : false : false } className={classes.blue} onClick={() => this.handleChange('AUTO', tracker.trackerID)}>
                           AUTO
+                          <BrightnessAutoIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                     </TableRow>
