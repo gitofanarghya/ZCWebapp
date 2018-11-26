@@ -17,6 +17,9 @@ import BuildIcon from '@material-ui/icons/Build';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import SendIcon from '@material-ui/icons/Send';
 import NetworkWifiIcon from '@material-ui/icons/NetworkWifi';
+import SettingsIcon from '@material-ui/icons/Settings';
+import InfoIcon from '@material-ui/icons/Info';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -80,9 +83,9 @@ class ResponsiveDrawer extends React.Component {
         <Link to="/Commissioning">
         <ListItem button className={this.props.selected === 'Commissioning' || !this.props.selected ? classes.selected : ""}>
           <ListItemIcon>
-            <BuildIcon />
+            <DashboardIcon />
           </ListItemIcon>
-          <ListItemText primary="Commissioning" />
+          <ListItemText primary="Dashboard" />
         </ListItem>
         </Link>
         <Link to="/Commands">
@@ -90,7 +93,7 @@ class ResponsiveDrawer extends React.Component {
           <ListItemIcon>
             <SendIcon />
           </ListItemIcon>
-          <ListItemText primary="Commands" />
+          <ListItemText primary="Control" />
         </ListItem>
         </Link>
         <Link to="/Trends">
@@ -106,7 +109,23 @@ class ResponsiveDrawer extends React.Component {
           <ListItemIcon>
             <NetworkWifiIcon />
           </ListItemIcon>
-          <ListItemText primary="Wifi-Settings" />
+          <ListItemText primary="Commissioning" />
+        </ListItem>
+        </Link>
+        <Link to="/Settings">
+        <ListItem button className={this.props.selected === 'Settings' ? classes.selected : ""}>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
+        </ListItem>
+        </Link>
+        <Link to="/About">
+        <ListItem button className={this.props.selected === 'About' ? classes.selected : ""}>
+          <ListItemIcon>
+            <InfoIcon />
+          </ListItemIcon>
+          <ListItemText primary="About" />
         </ListItem>
         </Link>
         <Divider />

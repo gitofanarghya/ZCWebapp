@@ -11,9 +11,17 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import classNames from 'classnames';
 import { wifiActions } from '../_actions'
+import { Typography } from '@material-ui/core';
 
 const styles = theme => ({
-  
+  paper: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+  }, 
+  input: {
+    display: 'none',
+  },
   
 });
 
@@ -45,41 +53,68 @@ class Wifi extends Component {
         
         return (
             <div className={classes.root} >
-            <Grid container className="flex" alignItems="stretch" direction="row" justify="center">
-              <Grid item sm={6} className={classNames("flex", "")}>
-              <Card className={classes.card}>
-                  <CardContent>
-                      <form onSubmit={this.handleSubmit}>
-                          <TextField
-                              name="ssid"
-                              label="SSID"
-                              placeholder="Enter the ssid"
-                              className="ssid-field"
-                              margin="normal"
-                              onChange={this.handleChange}
-                              fullWidth
-                          />
-                          <br />
-                          <TextField
-                              name="password"
-                              label="Password"
-                              className="password-field"
-                              placeholder="Enter the password"
-                              type="password"
-                              autoComplete="current-password"
-                              margin="normal"
-                              onChange={this.handleChange}
-                              fullWidth
-                          />
-                          <br />
-                          <br />
-                          <center><Button type="submit" className="submit-button">
-                              Connect
-                          </Button></center>
-                      </form>
-                  </CardContent>
-              </Card>
-            </Grid>
+            <Grid container className="flex" alignItems="stretch" direction="row" justify="space-evenly">
+              <Grid item xs={11} sm={10} md={8} lg={5}>
+                <Paper className={classes.paper}>
+                    <Typography variant="h5" component="h3">
+                        Wifi Settings
+                    </Typography>
+                    <form onSubmit={this.handleSubmit}>
+                        <TextField
+                            name="ssid"
+                            label="SSID"
+                            placeholder="Enter the ssid"
+                            className="ssid-field"
+                            margin="normal"
+                            onChange={this.handleChange}
+                            fullWidth
+                        />
+                        <br />
+                        <TextField
+                            name="password"
+                            label="Password"
+                            className="password-field"
+                            placeholder="Enter the password"
+                            type="password"
+                            autoComplete="current-password"
+                            margin="normal"
+                            onChange={this.handleChange}
+                            fullWidth
+                        />
+                        <br />
+                        <br />
+                        <center><Button type="submit" className="submit-button">
+                            Connect
+                        </Button></center>
+                    </form>
+                </Paper>
+              </Grid>
+              <Grid item xs={11} sm={10} md={8} lg={5}>
+              <Paper className={classes.paper}>
+                    <Typography variant="h5" component="h3">
+                        Upload Zone tracker Info:
+                    </Typography>
+                    <Typography component="p">
+                        a sentence describing what this input element is about and what is to be uploaded.
+                    </Typography>
+                <form onSubmit={this.handleSubmit}>
+                <center>
+                    <input
+                        accept="*.csv"
+                        className={classes.input}
+                        id="contained-button-file"
+                        multiple
+                        type="file"
+                    />
+                    <label htmlFor="contained-button-file">
+                        <Button variant="contained" component="span" className={classes.button}>
+                        Upload
+                        </Button>
+                    </label>
+                </center>
+                </form>
+                </Paper>
+              </Grid>
             </Grid>
             </div>
         );
