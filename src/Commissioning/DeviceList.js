@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { Button, Grid } from '@material-ui/core';
+import classNames from 'classnames'
 
 const styles = theme => ({
   root: {
@@ -44,7 +45,9 @@ const styles = theme => ({
     maxWidth: '130px',
     border: '1px solid black',
     boxShadow: '1px 1px 5px black',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    textAlignLast: 'end',
+    lineHeight: '0.5em'
   },
   clicked: {
     maxHeight: '30px',
@@ -52,7 +55,10 @@ const styles = theme => ({
     maxWidth: '130px',
     border: '1px solid black',
     boxShadow: 'inset 1px 1px 5px black',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    textAlignLast: 'end',
+    lineHeight: '0.5em'
+
   },
   
 });
@@ -71,7 +77,7 @@ function DeviceList(props) {
           {data.map(n => {
                   return (
                     <Grid item xs 
-                    className={n.trackerID === selectedTrackerID ? classes.clicked : classes.tracker} 
+                    className={classNames('trackerIcon', n.trackerID === selectedTrackerID ? classes.clicked : classes.tracker)}
                     onClick={() => props.getTrackerDetails(n.trackerID)}
                     key={n.trackerID}>{n.trackerID}</Grid>
                   )

@@ -208,3 +208,7 @@ html, body, .h100 {
   background-image: url('/img/buttons/clean.png');
   font-size: 24px;
 }
+
+.trackerIcon {
+  background-image: url('/img/Tracker_button.png');
+}

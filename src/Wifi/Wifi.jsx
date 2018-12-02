@@ -95,7 +95,7 @@ class Wifi extends Component {
                         Upload Zone tracker Info:
                     </Typography>
                     <Typography component="p">
-                        a sentence describing what this input element is about and what is to be uploaded.
+                        Upload the JSON document that contains the static initialization data.
                     </Typography>
                 <form onSubmit={this.handleSubmit}>
                 <center>

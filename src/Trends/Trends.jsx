@@ -87,16 +87,12 @@ class Trends extends React.Component {
         console.log(this.state)
         const { classes, theme, commissioningData, loaded, loadedTrends, trends } = this.props
         const parameters = [
-            'motor current',
-            'battery soc',
-            'battery temp',
+            'computed angle',
             'battery voltage',
             'battery current',
             'pv voltage',
             'pv current',
-            'tracking targetAngle',
-            'tracking sunAngle',
-            'tracking inclinometerAngle'
+            'actual angle'
         ]
 
         return(
