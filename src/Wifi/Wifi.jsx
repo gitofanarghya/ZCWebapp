@@ -30,7 +30,8 @@ class Wifi extends Component {
     state = {
         ssid: '',
         password: '',
-        submitted: false
+        submitted: false,
+        selectedFile: null
     };
 
   handleChange = (e) => {
@@ -46,6 +47,17 @@ class Wifi extends Component {
     if (ssid && password) {
         this.props.setWifiInfo(ssid, password);
     }
+  }
+
+  handleselectedFile = event => {
+    console.log(event.target.files[0])
+    this.setState({
+      selectedFile: event.target.files[0]
+    })
+  }
+
+  handleUpload = event => {
+    this.props.upload(this.state.selectedFile)
   }
 
     render(){
@@ -97,20 +109,24 @@ class Wifi extends Component {
                     <Typography component="p">
                         Upload the JSON document that contains the static initialization data.
                     </Typography>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                 <center>
                     <input
-                        accept="*.csv"
+                        accept="*.json"
                         className={classes.input}
                         id="contained-button-file"
                         multiple
                         type="file"
+                        onChange={this.handleselectedFile}
                     />
                     <label htmlFor="contained-button-file">
                         <Button variant="contained" component="span" className={classes.button}>
-                        Upload
+                            Select File
                         </Button>
                     </label>
+                    <Button onClick={this.handleUpload} variant="contained" component="span" className={classes.button}>
+                        Upload
+                    </Button>
                 </center>
                 </form>
                 </Paper>
@@ -129,6 +145,9 @@ Wifi.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
     setWifiInfo: (ssid, pass) => {
         dispatch(wifiActions.setWifiInfo(ssid, pass)) 
+    },
+    upload: file => {
+        dispatch(wifiActions.upload(file))
     }
   })
 

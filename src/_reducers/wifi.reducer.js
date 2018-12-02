@@ -2,7 +2,9 @@ import { wifiConstants } from '../_constants';
 
 const initialState = {
   sending: false,
-  sent:  false
+  sent:  false,
+  sendingFile: false,
+  sentFile:  false
 }
 
 export function wifi(state, action) {
@@ -28,6 +30,25 @@ export function wifi(state, action) {
         sending: false,
         error: action.error,
         sent: false
+      };
+    case wifiConstants.UPLOAD_REQUEST:
+      return {
+        ...state,
+        sendingFile: true,
+        sentFile: false
+      };
+    case wifiConstants.UPLOAD_SUCCESS:
+      return {
+        ...state,
+        sendingFile: false,
+        sentFile: true
+      };
+    case wifiConstants.UPLOAD_FAILURE:
+      return {
+        ...state,
+        sendingFile: false,
+        error: action.error,
+        sentFile: false
       };
     default:
       return state

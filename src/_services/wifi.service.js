@@ -1,5 +1,6 @@
 export const wifiService = {
-    setWifiInfo
+    setWifiInfo,
+    upload
 };
 
 const hostName = window.location.hostname
@@ -15,6 +16,17 @@ function setWifiInfo(ssid, pass) {
     };
 
     return fetch(`http://${hostName}:5000/setWifiInfo`, requestOptions)
+        .then(handleResponse)
+}
+
+function upload(file) {
+    const requestOptions = {
+        method: "POST",
+        mode: 'cors',
+        body: file
+    };
+
+    return fetch(`http://${hostName}:5000/loadStaticData`, requestOptions)
         .then(handleResponse)
 }
 
