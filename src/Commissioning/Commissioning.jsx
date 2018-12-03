@@ -68,14 +68,14 @@ class Commissioning extends Component {
                         <Grid container className="flex" alignItems="stretch" direction="column" justify="space-around">
                         <Grid item sm className={classNames("flex", classes.padBottom)}>
                         {
-                            loadedTrackerInfo ? <TrackerAngle angle={selectedTrackerDetails.UpdateData.tracking.inclinometerAngle}/> : <Loading />
+                            loadedTrackerInfo ? <TrackerAngle angle={selectedTrackerDetails.currentAngle}/> : <Loading />
                         }
                         </Grid>
                         <Grid item sm className={classNames("flex", classes.padTop)}>
                         { loadedTrackerInfo ? <TrackerDetails 
                                                 deviceID={commissioningData.find(e => e.trackerID === selectedTrackerID).controllerInfo.macID}
                                                 trackerID={selectedTrackerID} 
-                                                trackerDetails={selectedTrackerDetails.UpdateData}/> : <Loading /> }
+                                                trackerDetails={selectedTrackerDetails}/> : <Loading /> }
                         </Grid>
                         </Grid>
                     </Grid>

@@ -43,7 +43,6 @@ class Wifi extends Component {
     e.preventDefault();
     this.setState({ submitted: true });
     const { ssid, password } = this.state;
-    console.log(ssid, password)
     if (ssid && password) {
         this.props.setWifiInfo(ssid, password);
     }

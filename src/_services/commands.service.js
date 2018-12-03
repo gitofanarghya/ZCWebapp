@@ -4,12 +4,12 @@ export const commandsService = {
 
 const hostName = window.location.hostname
 
-function sendCommand(trackers, command) {
+function sendCommand(trackerID, command) {
     const requestOptions = {
         method: "POST",
         mode: 'cors',
         body: JSON.stringify({
-            trackerID: "tracker001",
+            trackerID: trackerID,
             command: command
         })
     };

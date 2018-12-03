@@ -20,10 +20,12 @@ function setWifiInfo(ssid, pass) {
 }
 
 function upload(file) {
+    var data = new FormData()
+    data.append('file', file)
     const requestOptions = {
         method: "POST",
         mode: 'cors',
-        body: file
+        body: data
     };
 
     return fetch(`http://${hostName}:5000/loadStaticData`, requestOptions)

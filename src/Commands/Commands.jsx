@@ -51,7 +51,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   sendCommand: (trackers, command) => {
-      console.log(command)
       dispatch(commandsActions.sendCommand(trackers, command)) 
   }
 })

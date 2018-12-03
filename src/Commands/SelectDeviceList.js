@@ -94,23 +94,23 @@ class CheckboxListSecondary extends React.Component {
                 Zone Control:
             </Typography>  
             <Grid container justify="space-evenly">   
-            <Button variant="contained" className={classNames(classes.green, classes.button)} onClick={() => this.handleChange('CLEAN')}>
+            <Button variant="contained" className={classNames(classes.green, classes.button)} onClick={() => this.handleChange('CLEAN', '00000000')}>
               CLEAN
               <div className={classNames(classes.rightIcon, 'cleanIcon')}></div>
             </Button>
-            <Button variant="contained" className={classNames(classes.orange, classes.button)} onClick={() => this.handleChange('STOW')}>
+            <Button variant="contained" className={classNames(classes.orange, classes.button)} onClick={() => this.handleChange('STOW', '00000000')}>
               STOW
               <StraightenIcon className={classes.rightIcon} />
             </Button>
-            <Button variant="contained" className={classNames(classes.red, classes.button)} onClick={() => this.handleChange('STOP')}>
+            <Button variant="contained" className={classNames(classes.red, classes.button)} onClick={() => this.handleChange('STOP', '00000000')}>
               STOP
               <StopIcon className={classes.rightIcon} />
             </Button>
-            <Button variant="contained" className={classNames(classes.blue, classes.button)} onClick={() => this.handleChange('AUTO')}>
+            <Button variant="contained" className={classNames(classes.blue, classes.button)} onClick={() => this.handleChange('AUTO', '00000000')}>
               AUTO
               <BrightnessAutoIcon className={classes.rightIcon} />
             </Button>
-            <Button variant="contained" className={classNames(classes.yellow, classes.button)} onClick={() => this.handleChange('UT')}>
+            <Button variant="contained" className={classNames(classes.yellow, classes.button)} onClick={() => this.handleChange('UT', '00000000')}>
               UPDATE TIME
               <AccessTimeIcon className={classes.rightIcon} />
             </Button>

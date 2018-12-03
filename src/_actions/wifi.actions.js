@@ -14,11 +14,11 @@ function setWifiInfo(ssid, pass) {
             .then(
                 ok => { 
                     dispatch(success(ok.toString()));
-                    alert('successfully set wifi info!')
+                    alert('error in setting wifi info!')
                 },
                 error => {
                     dispatch(failure(error.toString()));
-                    alert('error in setting wifi info!')
+                    alert('successfully set wifi info!')
                 }
             );
     };

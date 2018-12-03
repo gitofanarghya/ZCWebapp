@@ -17,7 +17,6 @@ function sendSetting(setting) {
 
 function handleResponse(response) {
     return response.json().then(json => {
-        console.log(json)
         if (!response.ok) {
             if (response.status === 403) {
                 console.log("403")

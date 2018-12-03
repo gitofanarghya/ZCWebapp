@@ -5,11 +5,11 @@ export const commandsActions = {
     sendCommand
 };
 
-function sendCommand(trackers, command) {
+function sendCommand(trackerID, command) {
     return dispatch => {
         dispatch(request());
 
-        commandsService.sendCommand(trackers, command)
+        commandsService.sendCommand(trackerID, command)
             .then(
                 ok => { 
                     dispatch(success(ok.toString()));

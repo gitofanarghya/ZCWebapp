@@ -84,7 +84,6 @@ class Trends extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         const { classes, theme, commissioningData, loaded, loadedTrends, trends } = this.props
         const parameters = [
             'computed angle',

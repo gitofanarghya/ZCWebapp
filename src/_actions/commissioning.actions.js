@@ -23,7 +23,7 @@ function getCommissioningData() {
 
     function request() { return { type: commissioningConstants.GET_COMMISSIONING_DATA_REQUEST } }
     function success(commissioningData, dispatch) {
-        dispatch(getCurrentTrackerInfo(commissioningData[0].trackerID)) 
+        dispatch(getCurrentTrackerInfo(commissioningData.staticData[0].trackerID)) 
         return { type: commissioningConstants.GET_COMMISSIONING_DATA_SUCCESS, commissioningData } 
     }
     function failure(error) { return { type: commissioningConstants.GET_COMMISSIONING_DATA_FAILURE, error } }

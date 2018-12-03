@@ -30,7 +30,6 @@ const styles = theme => ({
 
 function TrackerDetails(props) {
   const { classes, trackerDetails, trackerID, deviceID } = props;
-
   const data = trackerDetails
   
   return (
@@ -59,33 +58,71 @@ function TrackerDetails(props) {
             </TableRow>
             </TableHead>
             <TableBody>
-            {
-              Object.keys(data).map(property => {
-                if (data.hasOwnProperty(property)) {
-                  return (
-                    <TableRow key={property}>
-                      <TableCell className={classes.outerRow} padding="dense"><Typography variant="body2">{property}</Typography></TableCell>
-                      <TableCell padding="dense">
-                      <Table>
-                        <TableBody>
-                        {Object.keys(data[property]).map(e => {
-                          if (data[property].hasOwnProperty(e)) {
-                            return (
-                              <TableRow key={e}>
-                                <TableCell className={classes.innerRow} padding="dense"><Typography variant="body2">{e}</Typography></TableCell>
-                                <TableCell className={classes.innerRow} padding="dense"><Typography variant="body2">{data[property][e]}</Typography></TableCell>
-                              </TableRow>
-                            )
-                          }
-                        })}
-                        </TableBody>
-                      </Table>
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                        batteryCurrent: </TableCell><TableCell>{data.batteryCurrent}
                       </TableCell>
-                    </TableRow>
-                  )
-                }
-              })
-            }
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      batteryVoltage: </TableCell><TableCell>{data.batteryVoltage}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      calculatedAngle: </TableCell><TableCell>{data.calculatedAngle}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      currentAngle: </TableCell><TableCell>{data.currentAngle}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      currentMode: </TableCell><TableCell>{data.currentMode}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      errorCode: </TableCell><TableCell>{data.errorCode}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      motor: </TableCell><TableCell>{data.motor}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      pvCurrent: </TableCell><TableCell>{data.pvCurrent}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      pvVoltage: </TableCell><TableCell>{data.pvVoltage}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      timeStamp: </TableCell><TableCell>{data.timeStamp}
+                      </TableCell>
+                      </TableRow>
+
+                      <TableRow>
+                      <TableCell className={classes.innerRow} padding="dense">
+                      trackerID: </TableCell><TableCell>{data.trackerID}
+                      </TableCell>
+                      </TableRow>
             </TableBody>
         </Table>  
     </Paper>

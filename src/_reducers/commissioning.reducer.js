@@ -25,7 +25,7 @@ export function commissioning(state, action) {
       return {
         ...state,
         requesting: false,  
-        commissioningData: action.commissioningData,
+        commissioningData: action.commissioningData.staticData,
         loaded: true
       };
     case commissioningConstants.GET_COMMISSIONING_DATA_FAILURE:

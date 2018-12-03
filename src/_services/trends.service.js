@@ -14,7 +14,6 @@ function getTrends( trackers, parameter ) {
         })
     };
 
-    console.log(requestOptions)
 
 
 
