@@ -7,6 +7,7 @@ import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
+import AutoRenewIcon from '@material-ui/icons/AutoRenew'
 import { Icon } from '@material-ui/core/Icon'
 import { Grid, Button, Paper, Typography } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
@@ -112,9 +113,13 @@ class CheckboxListSecondary extends React.Component {
               RUN EAST
               <BrightnessAutoIcon className={classes.rightIcon} />
             </Button>
-            <Button variant="contained" className={classNames(classes.yellow, classes.button)} onClick={() => this.handleChange('UT', '00000000')}>
-              UPDATE TIME
+            <Button variant="contained" className={classNames(classes.yellow, classes.button)} onClick={() => this.handleChange('ST', '00000000')}>
+              SEND ST
               <ArrowRightIcon className={classes.rightIcon} />
+            </Button>
+            <Button variant="contained" className={classNames(classes.yellow, classes.button)} onClick={() => this.handleChange('RESET', '00000000')}>
+              RESET
+              <AutoRenewIcon className={classes.rightIcon} />
             </Button>
             </Grid>
           </Paper>
