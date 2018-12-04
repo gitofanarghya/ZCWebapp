@@ -5,6 +5,8 @@ import StopIcon from '@material-ui/icons/Stop'
 import StraightenIcon from '@material-ui/icons/Straighten'
 import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
+import ArrowRightIcon from '@material-ui/icons/ArrowRight'
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import { Icon } from '@material-ui/core/Icon'
 import { Grid, Button, Paper, Typography } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
@@ -94,9 +96,9 @@ class CheckboxListSecondary extends React.Component {
                 Zone Control:
             </Typography>  
             <Grid container justify="space-evenly">   
-            <Button variant="contained" className={classNames(classes.green, classes.button)} onClick={() => this.handleChange('CLEAN', '00000000')}>
-              CLEAN
-              <div className={classNames(classes.rightIcon, 'cleanIcon')}></div>
+            <Button variant="contained" className={classNames(classes.green, classes.button)} onClick={() => this.handleChange('RUNW', '00000000')}>
+            RUN WEST
+              <ArrowLeftIcon className={classes.rightIcon} />
             </Button>
             <Button variant="contained" className={classNames(classes.orange, classes.button)} onClick={() => this.handleChange('STOW', '00000000')}>
               STOW
@@ -106,13 +108,13 @@ class CheckboxListSecondary extends React.Component {
               STOP
               <StopIcon className={classes.rightIcon} />
             </Button>
-            <Button variant="contained" className={classNames(classes.blue, classes.button)} onClick={() => this.handleChange('AUTO', '00000000')}>
-              AUTO
+            <Button variant="contained" className={classNames(classes.blue, classes.button)} onClick={() => this.handleChange('RUNE', '00000000')}>
+              RUN EAST
               <BrightnessAutoIcon className={classes.rightIcon} />
             </Button>
             <Button variant="contained" className={classNames(classes.yellow, classes.button)} onClick={() => this.handleChange('UT', '00000000')}>
               UPDATE TIME
-              <AccessTimeIcon className={classes.rightIcon} />
+              <ArrowRightIcon className={classes.rightIcon} />
             </Button>
             </Grid>
           </Paper>
@@ -130,9 +132,9 @@ class CheckboxListSecondary extends React.Component {
                     <TableRow key={tracker.trackerID}>
                       <TableCell padding="default">{tracker.trackerID}</TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" className={classes.green} onClick={() => this.handleChange('CLEAN', tracker.trackerID)}>
-                          CLEAN
-                          <div className={classNames(classes.rightIcon, 'cleanIcon')}></div>
+                        <Button variant="contained" className={classes.green} onClick={() => this.handleChange('RUNW', tracker.trackerID)}>
+                          RUN WEST
+                          <ArrowLeftIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
@@ -148,9 +150,9 @@ class CheckboxListSecondary extends React.Component {
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" disabled={this.state.auto ? this.state.auto.indexOf(tracker.trackerID) > -1 ? true : false : false } className={classes.blue} onClick={() => this.handleChange('AUTO', tracker.trackerID)}>
-                          AUTO
-                          <BrightnessAutoIcon className={classes.rightIcon} />
+                        <Button variant="contained" disabled={this.state.auto ? this.state.auto.indexOf(tracker.trackerID) > -1 ? true : false : false } className={classes.blue} onClick={() => this.handleChange('RUNE', tracker.trackerID)}>
+                          RUN EAST
+                          <ArrowRightIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                     </TableRow>
