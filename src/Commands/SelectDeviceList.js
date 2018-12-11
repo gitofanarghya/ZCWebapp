@@ -7,7 +7,7 @@ import BrightnessAutoIcon from '@material-ui/icons/BrightnessAuto'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
-import AutoRenewIcon from '@material-ui/icons/AutoRenew'
+import AutorenewIcon from '@material-ui/icons/Autorenew'
 import { Icon } from '@material-ui/core/Icon'
 import { Grid, Button, Paper, Typography } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
@@ -88,7 +88,7 @@ class CheckboxListSecondary extends React.Component {
 
   render() {
     const { classes, trackers } = this.props;
-    console.log(this.state)
+    console.log(trackers)
     return ( 
       <Grid container direction='column' justify='space-evenly'>
         <Grid item>
@@ -119,7 +119,7 @@ class CheckboxListSecondary extends React.Component {
             </Button>
             <Button variant="contained" className={classNames(classes.yellow, classes.button)} onClick={() => this.handleChange('SMTALReset', '00000000')}>
               RESET
-              <AutoRenewIcon className={classes.rightIcon} />
+              <AutorenewIcon className={classes.rightIcon} />
             </Button>
             </Grid>
           </Paper>
@@ -137,25 +137,25 @@ class CheckboxListSecondary extends React.Component {
                     <TableRow key={tracker.trackerID}>
                       <TableCell padding="default">{tracker.trackerID}</TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" className={classes.green} onClick={() => this.handleChange('WE', tracker.trackerID)}>
+                        <Button variant="contained" className={classes.green} onClick={() => this.handleChange('WE', tracker.deviceID)}>
                           RUN WEST
                           <ArrowLeftIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" className={classes.orange} onClick={() => this.handleChange('SMTALStow', tracker.trackerID)}>
+                        <Button variant="contained" className={classes.orange} onClick={() => this.handleChange('SMTALStow', tracker.deviceID)}>
                           STOW
                           <StraightenIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" disabled={this.state.stopped ? this.state.stopped.indexOf(tracker.trackerID) > -1 ? true : false : false } className={classes.red} onClick={() => this.handleChange('SMTALStop', tracker.trackerID)}>
+                        <Button variant="contained" disabled={this.state.stopped ? this.state.stopped.indexOf(tracker.deviceID) > -1 ? true : false : false } className={classes.red} onClick={() => this.handleChange('SMTALStop', tracker.deviceID)}>
                           STOP
                           <StopIcon className={classes.rightIcon} />
                         </Button>
                       </TableCell>
                       <TableCell padding="default">
-                        <Button variant="contained" disabled={this.state.auto ? this.state.auto.indexOf(tracker.trackerID) > -1 ? true : false : false } className={classes.blue} onClick={() => this.handleChange('ES', tracker.trackerID)}>
+                        <Button variant="contained" disabled={this.state.auto ? this.state.auto.indexOf(tracker.deviceID) > -1 ? true : false : false } className={classes.blue} onClick={() => this.handleChange('ES', tracker.deviceID)}>
                           RUN EAST
                           <ArrowRightIcon className={classes.rightIcon} />
                         </Button>

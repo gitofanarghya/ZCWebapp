@@ -9,12 +9,12 @@ function sendCommand(trackerID, command) {
         method: "POST",
         mode: 'cors',
         body: JSON.stringify({
-            trackerID: trackerID,
+            deviceID: trackerID,
             command: command
         })
     };
 
-    return fetch(`http://${hostName}:5000/sendCommand`, requestOptions)
+    return fetch(`http://${hostName}:5001/sendCommand`, requestOptions)
         .then(handleResponse)
 }
 
